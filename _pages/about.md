@@ -46,4 +46,5 @@ and I am always happy to be handed a good puzzle.
 
 The [CV](/cv/) has the full version and a [PDF](/cv.pdf) to take away.
 The write-ups live in [projects](/projects/), anything you can actually play with
-will appear in [apps](/apps/), and [contact](/contact/) has the ways to reach me.
+will appear in [apps](/apps/), longer thinking ends up on the [blog](/blog/), and
+[contact](/contact/) has the ways to reach me.
