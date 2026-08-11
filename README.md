@@ -77,13 +77,13 @@ filename in the `profile: image:` line of `_pages/about.md`. Nothing else change
 
 ## Embedding things in a post
 
-`_posts/2026-08-11-embedding-things.md` is a working example of every embed the site
+`_posts/2026-08-10-embedding-things.md` is a working example of every embed the site
 supports: syntax-highlighted code, maths, responsive and zoomable images, an iframe
 around a self-contained program, Plotly, Chart.js and Vega-Lite charts, and a Jupyter
 notebook rendered inline from `assets/jupyter/`. Copy from it rather than looking up
 the syntax.
 
-**That post is a reference, not a real one.** Delete `_posts/2026-08-11-embedding-things.md`
+**That post is a reference, not a real one.** Delete `_posts/2026-08-10-embedding-things.md`
 whenever it has stopped being useful — nothing else depends on it.
 
 ## Deployment

@@ -49,7 +49,7 @@ jobs:
       - name: Check the routes that must exist 🔍
         run: |
           set -e
-          for f in index.html cv/index.html cv.pdf projects/index.html apps/index.html contact/index.html blog/index.html CNAME .nojekyll; do
+          for f in index.html cv/index.html cv.pdf projects/index.html apps/index.html contact/index.html blog/index.html blog/2026/embedding-things/index.html CNAME .nojekyll; do
             test -e "_site/$f" || { echo "MISSING: _site/$f"; exit 1; }
           done
           file _site/cv.pdf | grep -qi pdf || { echo "cv.pdf is not a PDF"; exit 1; }

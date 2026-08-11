@@ -1,7 +1,7 @@
 ---
 layout: post
 title: embedding things
-date: 2026-08-11 10:00:00 +0100
+date: 2026-08-10 10:00:00 +0100
 description: A reference post — every kind of thing this site can embed, in one place, actually working.
 tags: reference
 categories:
