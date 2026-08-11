@@ -8,8 +8,10 @@ subtitle: "[ profession — to be written ]"
 
 profile:
   align: right
-  # To add a portrait: drop the file in assets/img/ and put its filename here.
-  image:
+  # The portrait. Cropped head-and-shoulders from the original 1308x1962 frame;
+  # the theme's figure.liquid + jekyll-imagemagick generate the responsive webp
+  # sizes from this one file, so nothing else needs touching.
+  image: prof_pic.png
   image_circular: false
   # SLOT — the small block beside the portrait (location, affiliation, anything).
   more_info: >

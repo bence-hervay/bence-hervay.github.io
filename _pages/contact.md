@@ -14,15 +14,15 @@ nav_order: 5
 
 <ul>
   {% if site.data.socials.email %}
-    <li><strong>email</strong> — <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a></li>
+    <li><strong>email</strong> — {% al_email_protect_link site.data.socials.email %}</li>
   {% else %}
     <li><strong>email</strong> — [ to be supplied ]</li>
   {% endif %}
-  {% if site.data.socials.github_username %}<li><strong>github</strong> — <a href="https://github.com/{{ site.data.socials.github_username }}">{{ site.data.socials.github_username }}</a></li>{% endif %}
-  {% if site.data.socials.linkedin_username %}<li><strong>linkedin</strong> — <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">{{ site.data.socials.linkedin_username }}</a></li>{% endif %}
+  {% if site.data.socials.github_username %}<li><strong>github</strong> — <a href="https://github.com/{{ site.data.socials.github_username }}">github.com/{{ site.data.socials.github_username }}</a></li>{% endif %}
+  {% if site.data.socials.linkedin_username %}<li><strong>linkedin</strong> — <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}/">linkedin.com/in/{{ site.data.socials.linkedin_username }}</a></li>{% endif %}
+  {% if site.data.socials.facebook_id %}<li><strong>facebook</strong> — <a href="https://www.facebook.com/{{ site.data.socials.facebook_id }}">facebook.com/{{ site.data.socials.facebook_id }}</a></li>{% endif %}
+  {% if site.data.socials.instagram_id %}<li><strong>instagram</strong> — <a href="https://www.instagram.com/{{ site.data.socials.instagram_id }}/">instagram.com/{{ site.data.socials.instagram_id }}</a></li>{% endif %}
   {% if site.data.socials.projecteuler_url %}<li><strong>project euler</strong> — <a href="{{ site.data.socials.projecteuler_url }}">profile</a></li>{% endif %}
-  {% if site.data.socials.facebook_id %}<li><strong>facebook</strong> — <a href="https://www.facebook.com/{{ site.data.socials.facebook_id }}">{{ site.data.socials.facebook_id }}</a></li>{% endif %}
-  {% if site.data.socials.instagram_id %}<li><strong>instagram</strong> — <a href="https://www.instagram.com/{{ site.data.socials.instagram_id }}">{{ site.data.socials.instagram_id }}</a></li>{% endif %}
   {% if site.data.socials.phone %}<li><strong>phone</strong> — {{ site.data.socials.phone }}</li>{% endif %}
 </ul>
 

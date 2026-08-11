@@ -1,17 +1,20 @@
 # Every contact link on the site comes from this file.
 # Fill a value in and the link appears on /contact/; leave it out and it does not.
 
-# SLOT — email address. The Cambridge address has been retired and removed from
-# the whole site; put the Gmail address here and /contact/ picks it up.
-# email:
+# The published address. It never appears in the HTML in one piece: the theme's
+# al_email_protect plugin (protect_email: true in _config.yml) emits it as two
+# halves and only rejoins them in the browser, so harvesters reading the markup
+# find nothing to collect.
+email: hervay.bence@gmail.com
 
 github_username: bence-hervay
+linkedin_username: bence-hervay
+facebook_id: bencehervay
+instagram_id: bencehervay
 cv_pdf: /cv.pdf
 
-# Not published yet — uncomment and fill in to switch each one on.
-# linkedin_username:
-# facebook_id:
-# instagram_id:
+# Deliberately absent: Project Euler. No profile URL was supplied and guessing
+# one would publish a link to somebody else's progress page.
 # projecteuler_url:
 
 # Deliberately absent: no phone number is published on this site.

@@ -5,9 +5,8 @@ cv:
   name: Bence Hervay
   # Taken from the CV's own job title. Change it here if you want another.
   label: Quantitative Research Engineer
-  # SLOT — email. The Cambridge address has been removed from the whole site.
-  # Uncomment and put the Gmail address here to show it on the CV page.
-  # email:
+  # The Cambridge address has been retired and removed from the whole site.
+  email: hervay.bence@gmail.com
   location: London / Cambridge, UK
   image: ""
   # SLOT — the opening paragraph of the CV page.
