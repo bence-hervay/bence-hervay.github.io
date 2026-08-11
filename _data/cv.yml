@@ -3,15 +3,16 @@
 # The downloadable PDF is a separate file: /cv.pdf in the repository root.
 cv:
   name: Bence Hervay
+  # Taken from the CV's own job title. Change it here if you want another.
   label: Quantitative Research Engineer
-  email: bh525@cantab.ac.uk
+  # SLOT — email. The Cambridge address has been removed from the whole site.
+  # Uncomment and put the Gmail address here to show it on the CV page.
+  # email:
   location: London / Cambridge, UK
   image: ""
+  # SLOT — the opening paragraph of the CV page.
   summary: >
-    Quantitative research engineer working on factor models for covariance prediction.
-    Computer scientist by training (Trinity College, Cambridge), with a long habit of
-    building things from first principles — chess engines, path tracers, reinforcement
-    learning agents, and the occasional 350-year-old open problem.
+    [ summary — to be written ]
 
   social_networks:
     - network: GitHub

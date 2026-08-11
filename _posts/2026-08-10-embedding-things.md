@@ -13,9 +13,10 @@ chart:
 related_posts: false
 ---
 
-This post exists so that every kind of embed is proved working rather than promised.
-Anything below can be copied straight into a new post in `_posts/`. It is safe to
-delete this file once it has served its purpose — see the README.
+A reference page, not a piece of writing: it exists so that every kind of embed is
+proved working rather than promised. Anything below can be copied straight into a new
+post in `_posts/`. Delete this file whenever it has stopped being useful — see the
+README.
 
 ## Code, with syntax highlighting
 
@@ -54,8 +55,7 @@ a WebP version for browsers that want one. Add `zoomable=true` and it opens on c
     </div>
 </div>
 <div class="caption">
-    A finished board from the <a href="/projects/2048/">2048</a> agent: 32768 in the
-    corner, the whole snake intact.
+    A 2048 board, drawn to have something real to embed.
 </div>
 
 ## An embedded program

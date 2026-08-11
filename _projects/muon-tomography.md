@@ -1,17 +1,13 @@
 ---
 layout: page
-title: Muon tomography with stacked MWPCs
+title: Stacked MWPC for atmospheric muon tomography
 permalink: /projects/muon-tomography/
-description: Imaging with cosmic rays, using stacked multi-wire proportional chambers.
+description: Invited to the Large Hadron Collider (CMS detector).
 img:
-importance: 3
+importance: 6
 category: research
 ---
 
-Atmospheric muons pass through almost everything, and what they are deflected by
-tells you what the everything was made of. Using a stack of multi-wire proportional
-chambers as detectors, the project reconstructed the density of objects from the muon
-flux arriving through them.
+<!-- SLOT — your own write-up of this project. -->
 
-It led to an invitation to CERN's Large Hadron Collider, to the CMS detector — the
-same physics, several orders of magnitude more equipment.
+[ write-up — to be written ]

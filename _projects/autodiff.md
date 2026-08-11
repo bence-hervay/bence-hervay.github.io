@@ -2,12 +2,14 @@
 layout: page
 title: C++ automatic differentiation framework
 permalink: /projects/autodiff/
-description: Reverse-mode autodiff in C++, used in a video-assistant-referee system.
+description: Used for ball tracking in a video-assistant-referee system.
 img:
-importance: 3
+importance: 5
 category: code
 ---
 
-An automatic differentiation framework in C++, built without relying on an existing
-tensor library. It went on to be used for ball tracking in a video-assistant-referee
-system, which is a more satisfying end than most side projects manage.
+Built without relying on high-level libraries.
+
+<!-- SLOT — your own write-up of this project. -->
+
+[ write-up — to be written ]

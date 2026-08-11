@@ -54,7 +54,17 @@ jobs:
           done
           file _site/cv.pdf | grep -qi pdf || { echo "cv.pdf is not a PDF"; exit 1; }
           echo "All required routes present."
+      # The Cambridge address must not reappear in anything we publish.
+      - name: Check no retired email address is published 🔍
+        run: |
+          if grep -rIl --exclude=cv.pdf 'bh525@cantab' _site; then
+            echo "Retired email address found in the built site."; exit 1
+          fi
+          echo "Retired email address absent from the built site."
+      # Only main publishes. Other branches build and run the checks below, so a
+      # change can be validated without touching the live site.
       - name: Deploy 🚀
+        if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: _site

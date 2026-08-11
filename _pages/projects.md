@@ -2,7 +2,8 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Things I have built, mostly from first principles. The <a href="/cv/">CV</a> has the one-line versions.
+# SLOT — one line under the page title.
+description:
 nav: true
 nav_order: 2
 display_categories: [research, code]

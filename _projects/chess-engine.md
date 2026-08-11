@@ -2,16 +2,14 @@
 layout: page
 title: GM-level chess engine
 permalink: /projects/chess-engine/
-description: A chess engine strong enough to beat grandmasters, written from scratch.
+description: Awarded a research scholarship by the Hungarian National Research Excellence Program.
 img:
-importance: 1
+importance: 3
 category: code
 ---
 
-A chess engine written from first principles — no libraries doing the interesting
-parts — that plays at grandmaster level. The Hungarian National Research Excellence
-Program awarded it a research scholarship.
+Built without relying on high-level libraries.
 
-Like most of what is on this page, the point was not to have a chess engine. The
-point was that building one forces you to understand search, evaluation, move
-generation and the fine art of not allocating memory in an inner loop.
+<!-- SLOT — your own write-up of this project. -->
+
+[ write-up — to be written ]

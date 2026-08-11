@@ -24,6 +24,39 @@ matter of each page in `_pages/`. Add a page with `nav: true` and it appears in 
 menu, on desktop and mobile, with no other change. Light/dark mode is part of the
 theme (`enable_darkmode` in `_config.yml`) and remembers the reader's choice.
 
+## The placeholder slots
+
+Nothing on the site is written for you. Every piece of prose is a clearly-marked slot
+showing `[ ... to be written ]` on the page until you fill it in. Each one is a single
+line in a single file:
+
+| What | File | Line |
+| --- | --- | --- |
+| Profession / one-line title, under your name on the home page | `_pages/about.md` | `subtitle:` |
+| Small block beside the portrait (location, affiliation, anything) | `_pages/about.md` | `more_info:` |
+| Home page intro | `_pages/about.md` | the body text |
+| Email address | `_data/socials.yml` | `email:` (commented out) |
+| How you prefer to be reached | `_pages/contact.md` | the body text |
+| Contact page strapline | `_pages/contact.md` | `description:` |
+| CV opening paragraph | `_data/cv.yml` | `summary:` |
+| Email on the CV page | `_data/cv.yml` | `email:` (commented out) |
+| CV page strapline | `_pages/cv.md` | `description:` |
+| Projects page strapline | `_pages/projects.md` | `description:` |
+| Apps page strapline and body | `_pages/apps.md` | `description:` and body |
+| Each project's write-up | `_projects/<name>.md` | the body text |
+| Blog strapline | `_config.yml` | `blog_description:` |
+| Contact note under the links | `_config.yml` | `contact_note:` |
+
+Everything that is *not* a slot was lifted from the CV PDF in your own wording — the
+job titles, dates, achievements and one-line project descriptions. The CV page is
+generated from `_data/cv.yml`, so the CV flows through to the site automatically and
+is never retyped in HTML.
+
+The Cambridge address `bh525@cantab.ac.uk` has been removed from the entire site, and
+the build now fails if it ever reappears in the published output. **The CV PDF is a
+separate matter: its contents cannot be edited here, so if the PDF carries that
+address it is still on the site inside `/cv.pdf`.**
+
 ## How to do the common things
 
 **Update the CV.** Edit `_data/cv.yml` — the page at `/cv/` is generated from it.
