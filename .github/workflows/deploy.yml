@@ -1,0 +1,72 @@
+name: Deploy site
+
+on:
+  push:
+    branches:
+      - main
+      - "pix/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - name: Setup Ruby 💎
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.5"
+          bundler-cache: true
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - name: Install JS deps 📦
+        run: npm ci
+      - name: Install and Build 🔧
+        run: |
+          sudo apt-get update && sudo apt-get install -y imagemagick
+          pip3 install --upgrade nbconvert
+          export JEKYLL_ENV=production
+          bundle exec jekyll build
+      - name: Purge unused CSS 🧹
+        run: |
+          npm install -g purgecss
+          purgecss -c purgecss.config.js
+      # GitHub Pages would otherwise run Jekyll a second time over the built output.
+      - name: Stop Pages rebuilding the built site 🛑
+        run: touch _site/.nojekyll
+      - name: Check the routes that must exist 🔍
+        run: |
+          set -e
+          for f in index.html cv/index.html cv.pdf projects/index.html apps/index.html contact/index.html blog/index.html CNAME .nojekyll; do
+            test -e "_site/$f" || { echo "MISSING: _site/$f"; exit 1; }
+          done
+          file _site/cv.pdf | grep -qi pdf || { echo "cv.pdf is not a PDF"; exit 1; }
+          echo "All required routes present."
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
+      # Best effort: point Pages at the branch we just published to. Needs admin
+      # rights the Actions token may not have; if it fails, flip it by hand under
+      # Settings -> Pages -> Build and deployment -> Source -> gh-pages.
+      - name: Point Pages at gh-pages ⚙️
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method PUT "repos/${{ github.repository }}/pages" \
+            -f "source[branch]=gh-pages" -f "source[path]=/" && echo "Pages source set to gh-pages" \
+            || echo "Could not set Pages source automatically; do it in Settings -> Pages."

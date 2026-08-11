@@ -1,0 +1,23 @@
+# Every contact link on the site comes from this file.
+# Fill a value in and the link appears — on /contact/, in the footer and in the
+# social icons on the home page. Delete a value and the link disappears.
+# Key names follow the jekyll-socials plugin, so the icons are picked automatically.
+
+email: bh525@cantab.ac.uk
+github_username: bence-hervay
+cv_pdf: /cv.pdf
+rss_icon: true # comment this line out to hide the RSS icon
+
+# Not published yet — uncomment and fill in to switch each one on.
+# linkedin_username:
+# facebook_id:
+# instagram_id:
+# x_username:
+# telegram_username:
+
+# Project Euler has no built-in icon; it is rendered by hand on /contact/.
+# projecteuler_url: https://projecteuler.net/progress=...
+
+# Deliberately absent: no phone number is published on this site.
+# Adding one here would put it on a public page for scrapers to collect.
+# phone:
