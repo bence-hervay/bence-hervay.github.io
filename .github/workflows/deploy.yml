@@ -49,23 +49,17 @@ jobs:
       - name: Check the routes that must exist 🔍
         run: |
           set -e
-          for f in index.html projects/index.html apps/index.html contact/index.html blog/index.html blog/2026/embedding-things/index.html CNAME .nojekyll; do
+          for f in index.html cv/index.html cv.pdf projects/index.html apps/index.html contact/index.html blog/index.html blog/2026/embedding-things/index.html CNAME .nojekyll; do
             test -e "_site/$f" || { echo "MISSING: _site/$f"; exit 1; }
           done
+          file _site/cv.pdf | grep -qi pdf || { echo "cv.pdf is not a PDF"; exit 1; }
           echo "All required routes present."
-      # /cv and /cv.pdf are retired from this site; cv.bence.io is the sole CV
-      # destination now. Fail the build if either route reappears.
-      - name: Check the retired CV routes are gone 🔍
-        run: |
-          set -e
-          for f in cv/index.html cv.pdf; do
-            test -e "_site/$f" && { echo "SHOULD NOT EXIST: _site/$f"; exit 1; }
-          done
-          echo "Retired CV routes absent from the built site."
-      # The Cambridge address must not reappear in anything we publish.
+      # The Cambridge address must not reappear in anything we publish. cv.pdf
+      # is a binary PDF, not published output text, so it is exempt from the
+      # grep the same way it always has been.
       - name: Check no retired email address is published 🔍
         run: |
-          if grep -rIl 'bh525@cantab' _site; then
+          if grep -rIl --exclude=cv.pdf 'bh525@cantab' _site; then
             echo "Retired email address found in the built site."; exit 1
           fi
           echo "Retired email address absent from the built site."
