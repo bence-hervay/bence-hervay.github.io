@@ -1,0 +1,163 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Tic-tac-toe | Bence Hervay </title> <meta name="author" content="Bence Hervay"> <meta name="description" content="A trivial local demo — no AI, no networking, just X and O on one screen."> <meta property="og:site_name" content="Bence Hervay"> <meta property="og:type" content="website"> <meta property="og:title" content="Bence Hervay | Tic-tac-toe"> <meta property="og:url" content="https://bence.io/apps/tic-tac-toe/"> <meta property="og:description" content="A trivial local demo — no AI, no networking, just X and O on one screen."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Tic-tac-toe"> <meta name="twitter:description" content="A trivial local demo — no AI, no networking, just X and O on one screen."> <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Bence  Hervay"
+        },
+        "url": "https://bence.io/apps/tic-tac-toe/",
+        "@type": "WebSite",
+        "description": "A trivial local demo — no AI, no networking, just X and O on one screen.",
+        "headline": "Tic-tac-toe",
+        
+        "sameAs": ["https://github.com/bence-hervay","https://www.linkedin.com/in/bence-hervay","https://facebook.com/bencehervay","https://instagram.com/bencehervay",null],
+        
+        "name": "Bence  Hervay",
+        "@context": "https://schema.org"
+    }
+  </script> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A7%A9&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://bence.io/apps/tic-tac-toe/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <link rel="stylesheet" href="/assets/al_email_protect/css/email-protect.css"> </head> <body class=" sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm sticky-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Bence</span> Hervay </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="https://projects.bence.io/" rel="external nofollow noopener" target="_blank">projects </a> </li> <li class="nav-item active"> <a class="nav-link" href="https://apps.bence.io/" rel="external nofollow noopener" target="_blank">apps <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="https://blog.bence.io/" rel="external nofollow noopener" target="_blank">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="https://contact.bence.io/" rel="external nofollow noopener" target="_blank">contact </a> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Tic-tac-toe</h1> <p class="post-description">A trivial local demo — no AI, no networking, just X and O on one screen.</p> </header> <article> <p>A minimal demo app: a clickable 3×3 grid, alternating X and O, that detects a win or a draw. Fully static and client-side — no server, no network, no AI opponent, no external dependencies. It exists to prove the <code class="language-plaintext highlighter-rouge">/apps/</code> collection pattern works, not to be a polished game.</p> <div id="ttt-app" class="ttt-app"> <p class="ttt-status" id="ttt-status">X's turn</p> <div class="ttt-board" id="ttt-board"></div> <button type="button" class="ttt-reset" id="ttt-reset">Reset</button> </div> <style>
+  .ttt-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  .ttt-status {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 72px);
+    grid-template-rows: repeat(3, 72px);
+    gap: 4px;
+  }
+  .ttt-cell {
+    width: 72px;
+    height: 72px;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 600;
+    background: rgba(128, 128, 128, 0.12);
+    border: 1px solid rgba(128, 128, 128, 0.35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .ttt-cell:disabled {
+    cursor: default;
+  }
+  .ttt-cell.ttt-win {
+    background: rgba(80, 200, 120, 0.35);
+  }
+  .ttt-reset {
+    margin-top: 1rem;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+  }
+</style> <script>
+(function () {
+  var board = document.getElementById('ttt-board');
+  var status = document.getElementById('ttt-status');
+  var resetButton = document.getElementById('ttt-reset');
+
+  var LINES = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+    [0, 4, 8], [2, 4, 6]             // diagonals
+  ];
+
+  var cells = [];
+  var marks = [];
+  var currentPlayer = 'X';
+  var gameOver = false;
+
+  function checkResult() {
+    for (var i = 0; i < LINES.length; i++) {
+      var line = LINES[i];
+      var a = marks[line[0]], b = marks[line[1]], c = marks[line[2]];
+      if (a && a === b && b === c) {
+        return { winner: a, line: line };
+      }
+    }
+    if (marks.every(function (m) { return m !== null; })) {
+      return { winner: null, line: null, draw: true };
+    }
+    return null;
+  }
+
+  function render() {
+    status.textContent = currentPlayer + "'s turn";
+  }
+
+  function endGame(result) {
+    gameOver = true;
+    cells.forEach(function (cell) { cell.disabled = true; });
+    if (result.draw) {
+      status.textContent = "Draw!";
+    } else {
+      status.textContent = result.winner + " wins!";
+      result.line.forEach(function (i) { cells[i].classList.add('ttt-win'); });
+    }
+  }
+
+  function handleClick(index) {
+    if (gameOver || marks[index] !== null) return;
+    marks[index] = currentPlayer;
+    cells[index].textContent = currentPlayer;
+    cells[index].disabled = true;
+
+    var result = checkResult();
+    if (result) {
+      endGame(result);
+      return;
+    }
+
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    render();
+  }
+
+  function reset() {
+    marks = [null, null, null, null, null, null, null, null, null];
+    currentPlayer = 'X';
+    gameOver = false;
+    cells.forEach(function (cell) {
+      cell.textContent = '';
+      cell.disabled = false;
+      cell.classList.remove('ttt-win');
+    });
+    render();
+  }
+
+  function build() {
+    for (var i = 0; i < 9; i++) {
+      var cell = document.createElement('button');
+      cell.type = 'button';
+      cell.className = 'ttt-cell';
+      cell.setAttribute('aria-label', 'cell ' + (i + 1));
+      (function (idx) {
+        cell.addEventListener('click', function () { handleClick(idx); });
+      })(i);
+      board.appendChild(cell);
+      cells.push(cell);
+      marks.push(null);
+    }
+    resetButton.addEventListener('click', reset);
+    render();
+  }
+
+  build();
+})();
+</script> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Bence Hervay. Built with <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> and the <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> theme. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/al_email_protect/js/email-protect.js"></script> </body> </html>
