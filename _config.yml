@@ -70,10 +70,8 @@ al_folio:
     source: al-org-dev/distill-template#al-folio
     allow_remote_loader: false
   features:
-    # /cv/ and /cv.pdf are retired from this site; cv.bence.io is the sole CV
-    # destination now, so the theme's CV rendering stays switched off.
     cv:
-      enabled: false
+      enabled: true
     distill:
       enabled: true
   compat:

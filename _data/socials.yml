@@ -11,9 +11,7 @@ github_username: bence-hervay
 linkedin_username: bence-hervay
 facebook_id: bencehervay
 instagram_id: bencehervay
-# The CV now lives entirely on its own subdomain; bence.io no longer serves
-# /cv.pdf.
-cv_pdf: https://cv.bence.io/
+cv_pdf: /cv.pdf
 
 # Deliberately absent: Project Euler. No profile URL was supplied and guessing
 # one would publish a link to somebody else's progress page.

@@ -12,14 +12,16 @@ ordinary changes.
 | URL | File |
 | --- | --- |
 | `/` | `_pages/about.md` |
+| `/cv/` | `_pages/cv.md` (content comes from `_data/cv.yml`) |
+| `/cv.pdf` | `cv.pdf` in the repository root |
 | `/projects/` | `_pages/projects.md`, one file per project in `_projects/` |
 | `/apps/` | `_pages/apps.md` |
 | `/contact/` | `_pages/contact.md` (links come from `_data/socials.yml`) |
 | `/blog/` | `_pages/blog.md`, one file per post in `_posts/` |
 
-There is no `/cv/` or `/cv.pdf` on this site any more. The CV lives entirely on
-[cv.bence.io](https://cv.bence.io/) (a separate, unrelated repo) — nothing here
-builds, serves or links to a CV other than pointing at that address.
+The `/cv/` page also embeds the PDF inline (an `<embed type="application/pdf">` in
+the local `_layouts/cv.liquid` override) alongside a prominent download button, so a
+visitor can read the whole CV without leaving the page.
 
 The navigation menu builds itself from the `nav:` and `nav_order:` lines in the front
 matter of each page in `_pages/`. Add a page with `nav: true` and it appears in the
@@ -50,6 +52,9 @@ line in a single file:
 | Email address | `_data/socials.yml` | `email:` (commented out) |
 | How you prefer to be reached | `_pages/contact.md` | the body text |
 | Contact page strapline | `_pages/contact.md` | `description:` |
+| CV opening paragraph | `_data/cv.yml` | `summary:` |
+| Email on the CV page | `_data/cv.yml` | `email:` (commented out) |
+| CV page strapline | `_pages/cv.md` | `description:` |
 | Projects page strapline | `_pages/projects.md` | `description:` |
 | Apps page strapline and body | `_pages/apps.md` | `description:` and body |
 | Each project's write-up | `_projects/<name>.md` | the body text |
@@ -57,18 +62,21 @@ line in a single file:
 | Contact note under the links | `_config.yml` | `contact_note:` |
 
 Everything that is *not* a slot was lifted from the CV PDF in your own wording — the
-job titles, dates, achievements and one-line project descriptions. There is no CV
-data or page in this repo any more; that content lives on
-[cv.bence.io](https://cv.bence.io/) instead.
+job titles, dates, achievements and one-line project descriptions. The CV page is
+generated from `_data/cv.yml`, so the CV flows through to the site automatically and
+is never retyped in HTML.
 
 The Cambridge address `bh525@cantab.ac.uk` has been removed from the entire site, and
-the build now fails if it ever reappears in the published output. There is no PDF on
-this site any more for that check to have to exempt.
+the build now fails if it ever reappears in the published output. **The CV PDF is a
+separate matter: its contents cannot be edited here, so if the PDF carries that
+address it is still on the site inside `/cv.pdf`.**
 
 ## How to do the common things
 
-**Update the CV.** Not here — edit the separate `cv.bence.io` repo. This repo has no
-CV page, data or PDF.
+**Update the CV.** Edit `_data/cv.yml` — the page at `/cv/` is generated from it.
+Replace the PDF by overwriting `cv.pdf` in the root; the download button, the inline
+embed and the `/cv.pdf` URL all point at that one file, so there is nothing else to
+change.
 
 **Add a project.** Copy any file in `_projects/`, for example:
 
@@ -130,16 +138,15 @@ whenever it has stopped being useful — nothing else depends on it.
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
 pushes the result to the `gh-pages` branch; GitHub Pages serves that branch at
-bence.io (the `CNAME` file pins the domain). The workflow fails the build if `/`,
-`/projects`, `/apps`, `/contact` or `/blog` are missing from the output, and
-separately fails it if `/cv` or `/cv.pdf` are ever *present* — those routes are
-retired and must stay gone. So a broken or reintroduced route cannot ship quietly.
+bence.io (the `CNAME` file pins the domain). The workflow fails the build if `/cv`,
+`/cv.pdf`, `/projects`, `/apps`, `/contact` or `/blog` are missing from the output,
+so a broken route cannot ship quietly.
 
 The theme cannot be built by GitHub Pages' own Jekyll (it uses plugins Pages does not
 allow), which is why the build happens in Actions. **Settings → Pages → Build and
 deployment → Source must be set to `gh-pages`.** That is a one-off manual setting:
 the Actions token is not permitted to change it, so if it is ever reset, every page
-will 404 until it is set back.
+except `/cv.pdf` will 404 until it is set back.
 
 ### Working on it locally
 
