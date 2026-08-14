@@ -190,6 +190,8 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
+  apps:
+    output: true
   books:
     output: true
   news:
