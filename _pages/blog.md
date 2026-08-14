@@ -4,6 +4,9 @@ permalink: /blog/
 title: blog
 nav: true
 nav_order: 4
+# This page still lives and builds at /blog/ (a reverse proxy forwards
+# blog.bence.io/* here); only the nav link target changes.
+nav_external_url: https://blog.bence.io/
 pagination:
   enabled: true
   collection: posts

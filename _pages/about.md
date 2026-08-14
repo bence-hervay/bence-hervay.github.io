@@ -34,4 +34,4 @@ latest_posts:
 
 [ intro — to be written ]
 
-[cv](/cv/) · [projects](/projects/) · [apps](/apps/) · [blog](/blog/) · [contact](/contact/)
+[cv](https://cv.bence.io/) · [projects](https://projects.bence.io/) · [apps](https://apps.bence.io/) · [blog](https://blog.bence.io/) · [contact](https://contact.bence.io/)

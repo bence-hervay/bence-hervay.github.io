@@ -6,6 +6,9 @@ title: contact
 description:
 nav: true
 nav_order: 5
+# This page still lives and builds at /contact/ (a reverse proxy forwards
+# contact.bence.io/* here); only the nav link target changes.
+nav_external_url: https://contact.bence.io/
 ---
 
 <!-- SLOT — a line or two about how you prefer to be reached. -->

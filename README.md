@@ -12,17 +12,29 @@ ordinary changes.
 | URL | File |
 | --- | --- |
 | `/` | `_pages/about.md` |
-| `/cv/` | `_pages/cv.md` (content comes from `_data/cv.yml`) |
-| `/cv.pdf` | `cv.pdf` in the repository root |
 | `/projects/` | `_pages/projects.md`, one file per project in `_projects/` |
 | `/apps/` | `_pages/apps.md` |
 | `/contact/` | `_pages/contact.md` (links come from `_data/socials.yml`) |
 | `/blog/` | `_pages/blog.md`, one file per post in `_posts/` |
 
+There is no `/cv/` or `/cv.pdf` on this site any more. The CV lives entirely on
+[cv.bence.io](https://cv.bence.io/) (a separate, unrelated repo) — nothing here
+builds, serves or links to a CV other than pointing at that address.
+
 The navigation menu builds itself from the `nav:` and `nav_order:` lines in the front
 matter of each page in `_pages/`. Add a page with `nav: true` and it appears in the
 menu, on desktop and mobile, with no other change. Light/dark mode is part of the
 theme (`enable_darkmode` in `_config.yml`) and remembers the reader's choice.
+
+**Subdomain nav links.** `/projects/`, `/apps/`, `/contact/` and `/blog/` still build
+and serve at those paths — a reverse proxy (set up outside this repo) forwards
+`projects.bence.io`, `apps.bence.io`, `contact.bence.io` and `blog.bence.io` to them.
+So that visitors land on the subdomain rather than the `bence.io/...` path, each of
+those four pages sets `nav_external_url:` in its front matter, and the local
+`_includes/header.liquid` override (a copy of the theme's, kept in sync — see the
+comment at the top of the "Other pages" loop) uses it for the nav link href instead
+of the page's own permalink. The page's `permalink:` is unchanged and still what
+Jekyll actually builds and routes.
 
 ## The placeholder slots
 
@@ -38,9 +50,6 @@ line in a single file:
 | Email address | `_data/socials.yml` | `email:` (commented out) |
 | How you prefer to be reached | `_pages/contact.md` | the body text |
 | Contact page strapline | `_pages/contact.md` | `description:` |
-| CV opening paragraph | `_data/cv.yml` | `summary:` |
-| Email on the CV page | `_data/cv.yml` | `email:` (commented out) |
-| CV page strapline | `_pages/cv.md` | `description:` |
 | Projects page strapline | `_pages/projects.md` | `description:` |
 | Apps page strapline and body | `_pages/apps.md` | `description:` and body |
 | Each project's write-up | `_projects/<name>.md` | the body text |
@@ -48,20 +57,18 @@ line in a single file:
 | Contact note under the links | `_config.yml` | `contact_note:` |
 
 Everything that is *not* a slot was lifted from the CV PDF in your own wording — the
-job titles, dates, achievements and one-line project descriptions. The CV page is
-generated from `_data/cv.yml`, so the CV flows through to the site automatically and
-is never retyped in HTML.
+job titles, dates, achievements and one-line project descriptions. There is no CV
+data or page in this repo any more; that content lives on
+[cv.bence.io](https://cv.bence.io/) instead.
 
 The Cambridge address `bh525@cantab.ac.uk` has been removed from the entire site, and
-the build now fails if it ever reappears in the published output. **The CV PDF is a
-separate matter: its contents cannot be edited here, so if the PDF carries that
-address it is still on the site inside `/cv.pdf`.**
+the build now fails if it ever reappears in the published output. There is no PDF on
+this site any more for that check to have to exempt.
 
 ## How to do the common things
 
-**Update the CV.** Edit `_data/cv.yml` — the page at `/cv/` is generated from it.
-Replace the PDF by overwriting `cv.pdf` in the root; the download button and the
-`/cv.pdf` URL both point at that one file, so there is nothing else to change.
+**Update the CV.** Not here — edit the separate `cv.bence.io` repo. This repo has no
+CV page, data or PDF.
 
 **Add a project.** Copy any file in `_projects/`, for example:
 
@@ -123,15 +130,16 @@ whenever it has stopped being useful — nothing else depends on it.
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
 pushes the result to the `gh-pages` branch; GitHub Pages serves that branch at
-bence.io (the `CNAME` file pins the domain). The workflow fails the build if `/cv`,
-`/cv.pdf`, `/projects`, `/apps`, `/contact` or `/blog` are missing from the output,
-so a broken route cannot ship quietly.
+bence.io (the `CNAME` file pins the domain). The workflow fails the build if `/`,
+`/projects`, `/apps`, `/contact` or `/blog` are missing from the output, and
+separately fails it if `/cv` or `/cv.pdf` are ever *present* — those routes are
+retired and must stay gone. So a broken or reintroduced route cannot ship quietly.
 
 The theme cannot be built by GitHub Pages' own Jekyll (it uses plugins Pages does not
 allow), which is why the build happens in Actions. **Settings → Pages → Build and
 deployment → Source must be set to `gh-pages`.** That is a one-off manual setting:
 the Actions token is not permitted to change it, so if it is ever reset, every page
-except `/cv.pdf` will 404 until it is set back.
+will 404 until it is set back.
 
 ### Working on it locally
 

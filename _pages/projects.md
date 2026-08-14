@@ -6,6 +6,9 @@ permalink: /projects/
 description:
 nav: true
 nav_order: 2
+# This page still lives and builds at /projects/ (a reverse proxy forwards
+# projects.bence.io/* here); only the nav link target changes.
+nav_external_url: https://projects.bence.io/
 display_categories: [research, code]
 horizontal: false
 ---
