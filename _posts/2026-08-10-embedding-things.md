@@ -144,6 +144,7 @@ Notebooks are converted at build time and rendered inline, code and output toget
 
 ## Links between pages
 
-Internal links are ordinary paths: [cv](/cv/), [projects](/projects/),
-[apps](/apps/), [contact](/contact/), and [blog](/blog/), and the PDF at
-[/cv.pdf](/cv.pdf).
+Internal links are ordinary paths: [projects](/projects/), [apps](/apps/),
+[contact](/contact/), and [blog](/blog/), and the PDF at [/cv.pdf](/cv.pdf).
+The CV page is the one exception — it's linked by its canonical address,
+[cv](https://cv.bence.io/), rather than a path on this host.

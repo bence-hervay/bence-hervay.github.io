@@ -12,31 +12,33 @@ ordinary changes.
 | URL | File |
 | --- | --- |
 | `/` | `_pages/about.md` |
-| `/cv/` | `_pages/cv.md` (content comes from `_data/cv.yml`) |
+| `/cv/` | `_pages/cv.md` — a minimal embedded PDF viewer, not a rendering of `_data/cv.yml` |
 | `/cv.pdf` | `cv.pdf` in the repository root |
 | `/projects/` | `_pages/projects.md`, one file per project in `_projects/` |
 | `/apps/` | `_pages/apps.md` |
 | `/contact/` | `_pages/contact.md` (links come from `_data/socials.yml`) |
 | `/blog/` | `_pages/blog.md`, one file per post in `_posts/` |
 
-The `/cv/` page also embeds the PDF inline (an `<embed type="application/pdf">` in
-the local `_layouts/cv.liquid` override) alongside a prominent download button, so a
-visitor can read the whole CV without leaving the page.
+The `/cv/` page is deliberately minimal: a heading, an `<embed type="application/pdf">`
+pointed at the absolute `https://bence.io/cv.pdf`, and a download button — no rendered
+CV text. The `src`/`href` are absolute rather than a relative `/cv.pdf` because the
+page is reverse-proxied and served under `cv.bence.io` too; a relative path would try
+to fetch the PDF from that host instead of its one true address.
 
 The navigation menu builds itself from the `nav:` and `nav_order:` lines in the front
 matter of each page in `_pages/`. Add a page with `nav: true` and it appears in the
 menu, on desktop and mobile, with no other change. Light/dark mode is part of the
 theme (`enable_darkmode` in `_config.yml`) and remembers the reader's choice.
 
-**Subdomain nav links.** `/projects/`, `/apps/`, `/contact/` and `/blog/` still build
-and serve at those paths — a reverse proxy (set up outside this repo) forwards
-`projects.bence.io`, `apps.bence.io`, `contact.bence.io` and `blog.bence.io` to them.
-So that visitors land on the subdomain rather than the `bence.io/...` path, each of
-those four pages sets `nav_external_url:` in its front matter, and the local
-`_includes/header.liquid` override (a copy of the theme's, kept in sync — see the
-comment at the top of the "Other pages" loop) uses it for the nav link href instead
-of the page's own permalink. The page's `permalink:` is unchanged and still what
-Jekyll actually builds and routes.
+**Subdomain nav links.** `/cv/`, `/projects/`, `/apps/`, `/contact/` and `/blog/` still
+build and serve at those paths — a reverse proxy (set up outside this repo) forwards
+`cv.bence.io`, `projects.bence.io`, `apps.bence.io`, `contact.bence.io` and
+`blog.bence.io` to them. So that visitors land on the subdomain rather than the
+`bence.io/...` path, each of those pages sets `nav_external_url:` in its front matter,
+and the local `_includes/header.liquid` override (a copy of the theme's, kept in sync
+— see the comment at the top of the "Other pages" loop) uses it for the nav link href
+instead of the page's own permalink. The page's `permalink:` is unchanged and still
+what Jekyll actually builds and routes.
 
 ## The placeholder slots
 
@@ -62,9 +64,9 @@ line in a single file:
 | Contact note under the links | `_config.yml` | `contact_note:` |
 
 Everything that is *not* a slot was lifted from the CV PDF in your own wording — the
-job titles, dates, achievements and one-line project descriptions. The CV page is
-generated from `_data/cv.yml`, so the CV flows through to the site automatically and
-is never retyped in HTML.
+job titles, dates, achievements and one-line project descriptions. `_data/cv.yml`
+still holds that content but is no longer rendered anywhere on the site; the `/cv/`
+page just embeds the PDF.
 
 The Cambridge address `bh525@cantab.ac.uk` has been removed from the entire site, and
 the build now fails if it ever reappears in the published output. **The CV PDF is a
@@ -73,10 +75,10 @@ address it is still on the site inside `/cv.pdf`.**
 
 ## How to do the common things
 
-**Update the CV.** Edit `_data/cv.yml` — the page at `/cv/` is generated from it.
-Replace the PDF by overwriting `cv.pdf` in the root; the download button, the inline
-embed and the `/cv.pdf` URL all point at that one file, so there is nothing else to
-change.
+**Update the CV.** Replace the PDF by overwriting `cv.pdf` in the root; the download
+button and the inline embed on `/cv/` both point at `https://bence.io/cv.pdf`, so
+there is nothing else to change. (`_data/cv.yml` is kept around but is not rendered
+anywhere on the site.)
 
 **Add a project.** Copy any file in `_projects/`, for example:
 
